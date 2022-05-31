@@ -1,0 +1,26 @@
+{
+  "author": {
+    "name": "Anonimak",
+    "email": "sanonimak@gmail.com",
+    "url": "https://github.com/anonimak"
+  },
+  "scripts": {
+    "watch": "watchify script.js -o bundle.js",
+    "build": "browserify script.js > bundle.js",
+    "start": "node main.js",
+    "serve": "nodemon run-server.js"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.10",
+    "fs": "^0.0.1-security",
+    "glob": "^8.0.3",
+    "jquery": "^3.6.0",
+    "json-server": "^0.17.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.3",
+    "nodemon": "^2.0.16",
+    "sentiment": "^5.0.2",
+    "signale": "^1.4.0"
+  }
+}
