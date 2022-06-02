@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const Path = require('path');
 let axios = require('axios').default;
 let cheerio = require('cheerio');
@@ -9,7 +11,7 @@ const { Signale } = require('signale');
 const moment = require('moment');
 const signale = new Signale();
 
-let direndpointfile = Path.join(__dirname, `./api/`);
+let direndpointfile = Path.join(__dirname, `api/`);
 
 // axios kompas.com
 // Want to use async/await? Add the `async` keyword to your outer function/method.
@@ -127,7 +129,9 @@ const getEndpointData = (filename) => {
 };
 
 const filterExpiredEndpointData = (data) => {
-  let datelimit = moment().subtract(1, 'month').unix();
+  let datelimit = moment()
+    .subtract(process.env.DATA_LIMIT_MONTH, 'month')
+    .unix();
   return data.filter((content) => content.published_at > datelimit);
 };
 
