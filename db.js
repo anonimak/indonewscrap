@@ -8,10 +8,10 @@ const apiFiles = glob.sync('./api/*.json', {
 let data = {};
 
 apiFiles.forEach((filePath) => {
-  let [, file] = filePath.split('api/');
-  const api = require(Path.join(__dirname, file));
-  let url = file.slice(0, file.length - 5);
-  data[url] = api; // the only change
+  const api = require(Path.join(__dirname, filePath));
+  let url = filePath.slice(0, filePath.length - 5);
+  let [, file] = url.split('api/');
+  data[file] = api; // the only change
 });
 
 module.exports = data;

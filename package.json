@@ -7,12 +7,14 @@
   "scripts": {
     "watch": "watchify script.js -o bundle.js",
     "build": "browserify script.js > bundle.js",
-    "start": "node main.js",
-    "serve": "nodemon run-server.js"
+    "start": "nodemon main.js",
+    "serve": "nodemon run-server.js",
+    "dev": "concurrently \"npm run serve\" \"npm start\""
   },
   "dependencies": {
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.10",
+    "concurrently": "^7.2.1",
     "dotenv": "^16.0.1",
     "fs": "^0.0.1-security",
     "glob": "^8.0.3",

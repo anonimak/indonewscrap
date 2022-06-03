@@ -55,7 +55,12 @@ async function init() {
             endpointname: name,
             data: _.compact(newsList),
           });
-          break;
+          setTimeout(() => {
+            signale.info(
+              `Refetch data every ${process.env.REFRESH_TIME_SECOND} ms..`
+            );
+            init();
+          }, parseint(process.env.REFRESH_TIME_SECOND));
         }
 
         $(endpoints[i].elements_news.list).each((idx, el) => {
@@ -130,7 +135,10 @@ const getEndpointData = (filename) => {
 
 const filterExpiredEndpointData = (data) => {
   let datelimit = moment()
-    .subtract(process.env.DATA_LIMIT_MONTH, 'month')
+    .subtract(
+      process.env.DATA_LIMIT_MONTH ? process.env.DATA_LIMIT_MONTH : 1,
+      'month'
+    )
     .unix();
   return data.filter((content) => content.published_at > datelimit);
 };

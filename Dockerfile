@@ -10,6 +10,6 @@ COPY .env.example .env
 
 COPY . /app
 
-CMD ["npm", "run", "serve"]
+CMD ["npm", "run", "dev"]
 
-EXPOSE 3000
+EXPOSE 8000

@@ -1,6 +1,6 @@
 const jsonServer = require('json-server');
 
-const data = require('./api/db.js');
+const data = require('./db.js');
 const routes = require('./src/config/server/router.json');
 
 const server = jsonServer.create();
@@ -8,7 +8,7 @@ const router = jsonServer.router(data);
 const middlewares = jsonServer.defaults({
   readOnly: true,
   noCors: true,
-  static: './src/public/',
+  // static: './src/public/',
 });
 
 // github.com/typicode/json-server/issues/690#issuecomment-348616467
